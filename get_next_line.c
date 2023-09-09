@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 21:06:01 by ayal-ras          #+#    #+#             */
-/*   Updated: 2023/09/08 21:31:58 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2023/09/09 19:16:50 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ char	*get_next_line(int fd)
 
 char	*read_lines(int fd, char *store)
 {
-	char	*buffer;
+	char	buffer[BUFFER_SIZE + 2];
 	int		bytes;
 
 	bytes = 1;
-	buffer = malloc(BUFFER_SIZE + 2);
 	if (store == NULL)
 		store = ft_strdup("");
 	while (bytes > 0)
@@ -42,7 +41,6 @@ char	*read_lines(int fd, char *store)
 		if (bytes == -1)
 		{
 			free(store);
-			free(buffer);
 			return (NULL);
 		}
 		buffer[bytes] = '\0';
@@ -50,7 +48,7 @@ char	*read_lines(int fd, char *store)
 		if (ft_strchr(store, '\n') != NULL) 
 			break ;
 	}
-	return (free(buffer),store);
+	return (store);
 }
 
 char	*new_line(char *buffer)
@@ -107,3 +105,20 @@ char	*remaining(char *buffer)
 	free(buffer);
 	return (line);
 }
+// int main()
+// {
+// 	int fd;
+// 	char *buff;
+
+// 	// printf("%d\n",fd);
+// 	fd = open ("example.txt", O_RDWR);
+// 	buff = get_next_line(fd);
+// 	// while(buff)
+// 	// {
+// 		printf("%s",buff);
+// 	// 	free(buff);
+// 	// 	buff = get_next_line(fd);
+// 	// }
+// 	// printf("%s",get_next_line(fd));
+// 	// printf("%s",get_next_line(fd));
+// }

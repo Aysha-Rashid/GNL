@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 21:05:55 by ayal-ras          #+#    #+#             */
-/*   Updated: 2023/09/08 19:49:27 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2023/09/09 19:08:42 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1023
+#  define BUFFER_SIZE 2
 # endif
 
 char	*get_next_line(int fd);

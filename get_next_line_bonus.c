@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 18:03:52 by ayal-ras          #+#    #+#             */
-/*   Updated: 2023/09/08 21:31:53 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2023/09/08 18:11:08 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ char	*get_next_line(int fd)
 
 char	*read_lines(int fd, char *store)
 {
-	char	*buffer;
+	char	buffer[BUFFER_SIZE + 2];
 	int		bytes;
 
 	bytes = 1;
-	buffer = malloc(BUFFER_SIZE + 2);
 	if (store == NULL)
 		store = ft_strdup("");
 	while (bytes > 0)
@@ -41,7 +40,6 @@ char	*read_lines(int fd, char *store)
 		bytes = read(fd, buffer, BUFFER_SIZE);
 		if (bytes == -1)
 		{
-			free(buffer);
 			free(store);
 			return (NULL);
 		}
@@ -50,7 +48,7 @@ char	*read_lines(int fd, char *store)
 		if (ft_strchr(store, '\n') != NULL) 
 			break ;
 	}
-	return (free(buffer), store);
+	return (store);
 }
 
 char	*new_line(char *buffer)
